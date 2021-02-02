@@ -5,6 +5,7 @@
 :root {
   --cell-size: 60px;
   --mark-size: calc(var(--cell-size) * .9);
+  --width: 8;
 }
 
 body {
@@ -14,13 +15,13 @@ body {
 .board {
   background-color: rgba(231,184,184);
   width: 100vw;
-  height: 60vh;
+  height: 80vh;
   display: grid;
   justify-content: center;
   align-content: center;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(8, auto)
+  grid-template-columns: repeat(var(--width), auto)
 }
 
 .cell {
@@ -120,7 +121,64 @@ body {
   height: calc(var(--mark-size) * .7);
   background-color:rgba(255, 120, 120, .9);
 }*/
+#size-label{
+  grid-area: header-area;
+}
+#height{
+  grid-area: height-area;
+  font-size: 20px;
+  background-color: aliceblue;
+}
+#width{
+  grid-area: width-area;
+  font-size: 20px;
+}
+#x{
+  grid-area: x-area;
+  text-align: center;
+  font-size: 10vh;
+  height: 3px;
+  line-height: 13vh;
+}
+#set-button{
+  grid-area: set-button-area;
+  font-size: 30px;
+  background-color: rgba(129, 10, 10, 0.979);
+  border: 1px solid black;
+  padding: .25em .5em;
+  cursor: pointer;
+}
+#set-button:hover{
+  background-color: black;
+  color: white;
+  border-color: white;
+}
 
+#choose-grid{
+  display: grid;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 120, 120, 1);
+  text-align: center;
+  font-size: 30px;
+  justify-content: space-evenly;
+  grid:
+  '. . . . . . . . .'
+  '. header-area header-area header-area header-area header-area header-area header-area .'
+  '. height-area height-area height-area x-area width-area width-area width-area .'
+  '. . . . . . . . .'
+  '. . . set-button-area set-button-area set-button-area . . .'
+  '. . . . . . . . .'
+  '. . . . . . . . .'
+  '. . . . . . . . .';
+}
+
+#choose-grid.disappear{
+  display: none;
+}
 .winning-message {
   display: none;
   position: fixed;
@@ -128,7 +186,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 120, 120, .9);
+  background-color: rgba(255, 120, 120, 1);
   justify-content: center;
   align-items: center;
   color: black;

@@ -28,20 +28,43 @@ const WINNING_COMBINATIONS = [
 ]
 */
 const ATE = "ate"
-const cellElements = document.querySelectorAll('[data-cell]')
+var cellElements
 const board = document.getElementById('board')
 const winningMessageElement = document.getElementById('winningMessage')
 const restartButton = document.getElementById('restartButton')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
+const choosegridElement = document.getElementById('choose-grid')
+const setButton = document.getElementById('set-button')
 /*let circleTurn*/
 let rightTurn
-var width = 8
+var width
+var height
+setButton.addEventListener('click',startGame)
+function setgrid(){
+  choosegridElement.classList.remove('disappear')
+}
+/*startGame()*/
 
-startGame()
-
-restartButton.addEventListener('click', startGame)
+restartButton.addEventListener('click', setgrid)
 
 function startGame() {
+  height = Number(document.getElementById("height").value)
+  width = Number(document.getElementById("width").value)
+  if (height>width) {
+    document.documentElement.style.setProperty('--cell-size', (1/height)*480 + "px")
+  }
+  else{
+    document.documentElement.style.setProperty('--cell-size', (1/width)*480 + "px")
+  }
+  for(let i = 0;i<width*height;i++){
+    let added = document.createElement("div")
+    added.className="cell"
+    added.setAttribute("data-cell","")
+    board.appendChild(added)
+  }
+  cellElements = document.querySelectorAll('[data-cell]')
+  document.documentElement.style.setProperty('--width', width)
+  choosegridElement.classList.add('disappear')
   rightTurn = false
   cellElements.forEach(cell => {
     cell.classList.remove(ATE)
@@ -96,16 +119,16 @@ function handleClick(e){
 function removeSingle(){
   var i = 0
   for(;i<cellElements.length;i++){
-    if(((((i)%8)+8)%8==0 || cellElements[i-1].classList.contains(ATE))&&((((i)%8)+8)%8==7 || cellElements[i+1].classList.contains(ATE))){
-      console.log(i)
+    if(((((i)%width)+width)%width==0 || cellElements[i-1].classList.contains(ATE))&&((((i)%width)+width)%width==width-1 || cellElements[i+1].classList.contains(ATE))){
       cellElements[i].classList.add(ATE)
     }
-    if((i-8<0 || cellElements[i-8].classList.contains(ATE))&&(i+8>cellElements.length-1 || cellElements[i+8].classList.contains(ATE))){
+    if((i-width<0 || cellElements[i-width].classList.contains(ATE))&&(i+width>cellElements.length-1 || cellElements[i+width].classList.contains(ATE))){
       cellElements[i].classList.add(ATE)
     }
   }
 }
 function endGame() {
+  board.innerHTML = ""
   winningMessageTextElement.innerText = `${rightTurn ? "RIGHT" : "LEFT"} Wins!`
   winningMessageElement.classList.add('show')
 }
@@ -118,27 +141,27 @@ function removeCol(i){
     }
     cellElements[temp].classList.add(ATE)
     cellElements[temp].removeEventListener('click', handleClick)
-    temp = temp+8
+    temp = temp+width
   }
-  temp = i - 8
+  temp = i - width
   while(temp > -1){
     if(cellElements[temp].classList.contains(ATE)){
       break
     }
     cellElements[temp].classList.add(ATE)
     cellElements[temp].removeEventListener('click', handleClick)
-    temp = temp - 8
+    temp = temp - width
   }
 }
 
 function removeRow(i){
   var temp = i
-  if(temp%8==0){
+  if(temp%width==0){
     cellElements[temp].classList.add(ATE)
     cellElements[temp].removeEventListener('click', handleClick)
     temp=temp+1
   }
-  while(temp%8!=0){
+  while(temp%width!=0){
     if(cellElements[temp].classList.contains(ATE)){
       break
     }
@@ -146,12 +169,11 @@ function removeRow(i){
     cellElements[temp].removeEventListener('click', handleClick)
     temp = temp+1
   }
-  if(i%8==0){
+  if(i%width==0){
     return
   }
   temp = i - 1
-  while(((temp%8)+8)%8!=7){
-    console.log(temp)
+  while(((temp%width)+width)%width!=width-1){
     if(cellElements[temp].classList.contains(ATE)){
       break
     }
@@ -204,7 +226,6 @@ function checkWin(){
   var i = 0
   for(; i<cellElements.length;i++){
     if(!cellElements[i].classList.contains(ATE)){
-      console.log("here")
       return false
     }
   }
