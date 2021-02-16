@@ -4,7 +4,6 @@
 
 :root {
   --cell-size: 60px;
-  --mark-size: calc(var(--cell-size) * .9);
   --width: 8;
 }
 
@@ -13,9 +12,6 @@ body {
 }
 
 .board {
-  background-color: rgba(231,184,184);
-  width: 100vw;
-  height: 80vh;
   display: grid;
   justify-content: center;
   align-content: center;
