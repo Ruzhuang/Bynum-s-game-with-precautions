@@ -9,9 +9,11 @@
 
 body {
   margin: 0;
+  background-color:#F6F7E8;
 }
 
 .board {
+  background-color: #F6F7E8;
   display: grid;
   justify-content: center;
   align-content: center;
@@ -23,14 +25,49 @@ body {
 .cell {
   width: var(--cell-size);
   height: var(--cell-size);
-  background-color: rgba(255, 120, 120, .9);
-  border: 1px solid rgba(231,184,184);
+  /*background-color: rgba(255, 120, 120, .9);
+  border: 1px solid rgba(231,184,184);*/
+  background-color:#517A85;
+  border-radius: calc(var(--cell-size)*0.2);
+  margin: calc(var(--cell-size)*0.05);
+  position: relative;
+  cursor: pointer;
+  
+}
+
+.cell.food{
+  width: var(--cell-size);
+  height: var(--cell-size);
+  background-color:#B1E1DF;
+  border-radius: calc(var(--cell-size)*0.2);
+  margin: calc(var(--cell-size)*0.05);
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   cursor: pointer;
 }
+/*
+.cell:not(.ate):not(.food):before{
+  content:"";
+  position: absolute;
+  width:calc(var(--cell-size));
+  height:calc(var(--cell-size));
+  border-radius: calc(var(--cell-size)*0.1);
+  box-shadow: calc(var(--cell-size)*0.1) calc(var(--cell-size)*0.1) calc(var(--cell-size)*0.1) #B1E1DF;
+  
+}*/
+/*
+.cell:not(.ate):before{
+  content:"";
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left:0;
+  right: 0;
+  z-index: -1;
+  box-shadow: -5px 5px 20px 5px grey;
+}*/
 /*
 .cell:first-child,
 .cell:nth-child(2),
@@ -57,9 +94,9 @@ body {
 .cell.ate{
   width: var(--cell-size);
   height: var(--cell-size);
-  background-color: rgba(231,184,184);
-  border: 1px solid rgba(231,184,184);
+  background-color: transparent;
   cursor: not-allowed;
+  box-shadow: transparent;
 
 }
 

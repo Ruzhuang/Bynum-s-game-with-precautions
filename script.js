@@ -28,6 +28,7 @@ const WINNING_COMBINATIONS = [
 ]
 */
 const ATE = "ate"
+const FOOD = "food"
 var cellElements
 const board = document.getElementById('board')
 const winningMessageElement = document.getElementById('winningMessage')
@@ -39,6 +40,7 @@ const setButton = document.getElementById('set-button')
 let rightTurn
 var width
 var height
+
 setButton.addEventListener('click',startGame)
 function setgrid(){
   choosegridElement.classList.remove('disappear')
@@ -51,10 +53,10 @@ function startGame() {
   height = Number(document.getElementById("height").value)
   width = Number(document.getElementById("width").value)
   if (height>width) {
-    document.documentElement.style.setProperty('--cell-size', (1/height)*480 + "px")
+    document.documentElement.style.setProperty('--cell-size', ((1-0.25)/height)*100 + "vh")
   }
   else{
-    document.documentElement.style.setProperty('--cell-size', (1/width)*480 + "px")
+    document.documentElement.style.setProperty('--cell-size', ((1-0.25)/width)*100 + "vh")
   }
   for(let i = 0;i<width*height;i++){
     let added = document.createElement("div")
@@ -70,9 +72,90 @@ function startGame() {
     cell.classList.remove(ATE)
     cell.removeEventListener('click', handleClick)
     cell.addEventListener('click', handleClick, { once: true })
+    cell.addEventListener('mouseover', handleHover)
+    cell.addEventListener('mouseout', handleOut)
   })
   document.getElementById("turn").innerHTML = "LEFT's turn"
   winningMessageElement.classList.remove('show')
+}
+function handleHover(e){
+  const cell=e.target;
+  var i = getCellIndex(cell);
+  if(rightTurn){
+    hoverRow(i);
+  }
+  else{
+    hoverCol(i);
+  }
+  hoverSingle();
+}
+function hoverSingle(){
+  var i = 0
+  for(;i<cellElements.length;i++){
+    if(!rightTurn){
+          if(((((i)%width)+width)%width==0 || cellElements[i-1].classList.contains(ATE)||cellElements[i-1].classList.contains(FOOD))&&((((i)%width)+width)%width==width-1 || cellElements[i+1].classList.contains(ATE)|| cellElements[i+1].classList.contains(FOOD))){
+      cellElements[i].classList.add(FOOD)
+    }
+    }
+    else{
+      if((i-width<0 || cellElements[i-width].classList.contains(ATE)|| cellElements[i-width].classList.contains(FOOD))&&(i+width>cellElements.length-1 || cellElements[i+width].classList.contains(ATE)|| cellElements[i+width].classList.contains(FOOD))){
+      cellElements[i].classList.add(FOOD)
+    }
+    }
+    
+  }
+}
+
+function hoverCol(i){
+  var temp = i
+  while(temp<cellElements.length){
+    if(cellElements[temp].classList.contains(ATE)){
+      break
+    }
+    cellElements[temp].classList.add(FOOD)
+    temp = temp+width
+  }
+  temp = i - width
+  while(temp > -1){
+    if(cellElements[temp].classList.contains(ATE)){
+      break
+    }
+    cellElements[temp].classList.add(FOOD)
+    temp = temp - width
+  }
+}
+
+function hoverRow(i){
+  var temp = i
+  if(temp%width==0){
+    cellElements[temp].classList.add(FOOD)
+    temp=temp+1
+  }
+  while(temp%width!=0){
+    if(cellElements[temp].classList.contains(ATE)){
+      break
+    }
+    cellElements[temp].classList.add(FOOD)
+    temp = temp+1
+  }
+  if(i%width==0){
+    return
+  }
+  temp = i - 1
+  while(((temp%width)+width)%width!=width-1){
+    if(cellElements[temp].classList.contains(ATE)){
+      break
+    }
+    cellElements[temp].classList.add(FOOD)
+    temp = temp-1
+  }
+}
+
+function handleOut(){
+  var i =0;
+  for(;i<cellElements.length;i++){
+    cellElements[i].classList.remove(FOOD);
+  }
 }
 
 function getCellIndex(elm){
@@ -121,9 +204,15 @@ function removeSingle(){
   for(;i<cellElements.length;i++){
     if(((((i)%width)+width)%width==0 || cellElements[i-1].classList.contains(ATE))&&((((i)%width)+width)%width==width-1 || cellElements[i+1].classList.contains(ATE))){
       cellElements[i].classList.add(ATE)
+      cellElements[i].removeEventListener('click', handleClick)
+      cellElements[i].removeEventListener('mouseover',handleHover)
+      cellElements[i].removeEventListener('mouseout',handleOut)
     }
     if((i-width<0 || cellElements[i-width].classList.contains(ATE))&&(i+width>cellElements.length-1 || cellElements[i+width].classList.contains(ATE))){
       cellElements[i].classList.add(ATE)
+      cellElements[i].removeEventListener('click', handleClick)
+      cellElements[i].removeEventListener('mouseover',handleHover)
+      cellElements[i].removeEventListener('mouseout',handleOut)
     }
   }
 }
@@ -141,6 +230,8 @@ function removeCol(i){
     }
     cellElements[temp].classList.add(ATE)
     cellElements[temp].removeEventListener('click', handleClick)
+    cellElements[i].removeEventListener('mouseover',handleHover)
+      cellElements[i].removeEventListener('mouseout',handleOut)
     temp = temp+width
   }
   temp = i - width
@@ -150,6 +241,8 @@ function removeCol(i){
     }
     cellElements[temp].classList.add(ATE)
     cellElements[temp].removeEventListener('click', handleClick)
+    cellElements[i].removeEventListener('mouseover',handleHover)
+      cellElements[i].removeEventListener('mouseout',handleOut)
     temp = temp - width
   }
 }
@@ -159,6 +252,8 @@ function removeRow(i){
   if(temp%width==0){
     cellElements[temp].classList.add(ATE)
     cellElements[temp].removeEventListener('click', handleClick)
+    cellElements[i].removeEventListener('mouseover',handleHover)
+      cellElements[i].removeEventListener('mouseout',handleOut)
     temp=temp+1
   }
   while(temp%width!=0){
@@ -167,6 +262,8 @@ function removeRow(i){
     }
     cellElements[temp].classList.add(ATE)
     cellElements[temp].removeEventListener('click', handleClick)
+    cellElements[i].removeEventListener('mouseover',handleHover)
+      cellElements[i].removeEventListener('mouseout',handleOut)
     temp = temp+1
   }
   if(i%width==0){
@@ -179,6 +276,8 @@ function removeRow(i){
     }
     cellElements[temp].classList.add(ATE)
     cellElements[temp].removeEventListener('click', handleClick)
+    cellElements[i].removeEventListener('mouseover',handleHover)
+    cellElements[i].removeEventListener('mouseout',handleOut)
     temp = temp-1
   }
 }
