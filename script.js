@@ -43,7 +43,13 @@ var height
 
 setButton.addEventListener('click',startGame)
 function setgrid(){
-  choosegridElement.classList.remove('disappear')
+  if(localStorage.getItem("show")!="false"){
+    window.location.href="index.html";
+  }
+  else{
+    choosegridElement.classList.remove('disappear');
+  }
+  
 }
 /*startGame()*/
 
@@ -75,8 +81,8 @@ function startGame() {
     cell.addEventListener('mouseover', handleHover)
     cell.addEventListener('mouseout', handleOut)
   })
-  document.getElementById("turn").innerHTML = "LEFT's turn"
-  winningMessageElement.classList.remove('show')
+  document.getElementById("left").classList.remove("right-turn");
+  document.getElementById("right").classList.remove("right-turn");  winningMessageElement.classList.remove('show')
 }
 function handleHover(e){
   const cell=e.target;
@@ -218,7 +224,7 @@ function removeSingle(){
 }
 function endGame() {
   board.innerHTML = ""
-  winningMessageTextElement.innerText = `${rightTurn ? "RIGHT" : "LEFT"} Wins!`
+  winningMessageTextElement.innerText = `${rightTurn ? "RIGHT" : "LEFT"} Wins`
   winningMessageElement.classList.add('show')
 }
 
@@ -295,10 +301,13 @@ function isDraw() {
 function swapTurns() {
   rightTurn = !rightTurn
   if (rightTurn) {
-    document.getElementById("turn").innerHTML = "RIGHT's turn"
+    document.getElementById("left").classList.add("right-turn");
+    document.getElementById("right").classList.add("right-turn");
+
   }
   else{
-    document.getElementById("turn").innerHTML = "LEFT's turn"
+    document.getElementById("left").classList.remove("right-turn");
+    document.getElementById("right").classList.remove("right-turn");
   }
 }
 /*
