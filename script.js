@@ -36,10 +36,42 @@ const restartButton = document.getElementById('restartButton')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
 const choosegridElement = document.getElementById('choose-grid')
 const setButton = document.getElementById('set-button')
+const menuButton = document.getElementById("menu-button")
+const menu = document.getElementById("menu");
+const menuRestartButton = document.getElementById("restart");
+const instructionButton = document.getElementById("instruction");
 /*let circleTurn*/
 let rightTurn
 var width
 var height
+
+menuButton.addEventListener('click',pressMenuButton);
+menu.addEventListener("mouseleave",closeMenu);
+menuRestartButton.addEventListener('click',menuRestart);
+instructionButton.addEventListener("click",showInstruction);
+
+function menuRestart(){
+  board.innerHTML="";
+  setgrid();
+}
+function showInstruction(){
+  localStorage.setItem("forceOpen","true");
+  window.location.href="index.html";
+}
+
+function pressMenuButton(){
+  console.log("here")
+  if(!menu.classList.contains("show")){
+    menu.classList.add("show");
+  }
+  else{
+    menu.classList.remove("show");
+  }
+}
+
+function closeMenu(){
+  menu.classList.remove("show");
+}
 
 setButton.addEventListener('click',startGame)
 function setgrid(){
