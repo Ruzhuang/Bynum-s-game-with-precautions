@@ -1,50 +1,55 @@
-#container{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
+#container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-
 }
-#load{
+
+#load {
     position: absolute;
-    top:0;
+    display: flex;
+    top: 80px;
     left: 0;
-    width: 100%;
-    height: 100%;
-    content: "";
-    background-color: teal;
+    bottom: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(231, 228, 228, 0.863);
 }
 
+#loading {
+    font-size: 90px;
+}
 
 ::-webkit-scrollbar {
     width: 12px;
     height: 12px;
-    }
-    
-::-webkit-scrollbar-track {
-    border: 1px solid lightgray ;
-    border-radius: 0.01in;
-    }
-    
-::-webkit-scrollbar-thumb {
-    background: #517A85;  
-    border-radius: 0.01in;
-    }
+}
 
-#text-box{
-    position: relative;
+::-webkit-scrollbar-track {
+    border: 1px solid lightgray;
     border-radius: 0.01in;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #517A85;
+    border-radius: 0.01in;
+}
+
+#text-box {
+    position: relative;
     padding: 5%;
     height: 90%;
     background-color: white;
-    overflow:scroll;
+    overflow: scroll;
     overflow-x: hidden;
 }
-#instruction{
+
+#instruction {
     display: grid;
     font-family: "Gill Sans", sans-serif;
     font-size: 40px;
@@ -55,55 +60,52 @@
     text-align: center;
 }
 
-button:hover{
+button:hover {
     background-color: #517A85;
-    color:#73bed3;
+    color: #73bed3;
     border-color: #73bed3;
     cursor: pointer;
-  }
+}
 
-button{
+button {
     font-family: "Gill Sans", sans-serif;
     margin: 10px;
     font-size: 25px;
-    color:#517A85;
+    color: #517A85;
     width: 150px;
     background-color: #73bed3;
-    display:grid;
+    display: grid;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
     border: solid 6px #517A85;
 }
 
-#do-not-show-button{
+#do-not-show-button {
     margin-top: 40px;
     width: 400px;
     margin-bottom: -20px;
 }
 
-#header-container{
+#header-container {
     background-color: #B1E1DF;
     height: 80px;
     display: flex;
     flex-direction: row;
 }
 
-
-p{
+p {
     font-family: "Gill Sans", sans-serif;
     font-size: 0.25in;
-
 }
 
-img{
+img {
     border-radius: 0.1in;
     width: 70%;
     max-width: 500px;
 }
 
-
-.important{
+.important {
     color: red;
 }
 
