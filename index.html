@@ -22,45 +22,114 @@
         <div id="text-box">
             <p>Bynum’s game is a two-person game where the starting position is a grid of squares (shown below). <br> The players are assigned the names "LEFT" and "RIGHT".<br> They will take turns erasing individual rows/columns of the starting position.
             </p>
-            <img src="grid6*8.png" alt="6 x 8 grid">
+            <div class="img-wrapper">
+                <img src="grid6*8.png" alt="6 x 8 grid">
+                <div class="loader" id="loader1">
+                    <p>Loading</p>
+                    <div class="spin"></div>
+                </div>
+            </div>
             <p>Before the game starts, the player choose the dimension (height x width) of the grid. (In this introduction, we will refer to the 6x8 grid)</p>
-            <img src="set_grid.png" alt="set grid page">
+            <div class="img-wrapper">
+                <img src="set_grid.png" alt="set grid page">
+                <div class="loader" id="loader2">
+                    <p>Loading</p>
+                    <div class="spin"></div>
+                </div>
+            </div>
             <p>The game starts when left makes the first move. <br> Left is required to remove any column of squares from the starting position.<br> She does so by clicking on any location (square) in the column she wishes to remove.</p>
-            <img src="first_click.gif" alt="LEFT's first click">
+            <div class="img-wrapper">
+                <img src="first_click.gif" alt="LEFT's first click">
+                <div class="loader" id="loader3">
+                    <p>Loading</p>
+                    <div class="spin"></div>
+                </div>
+            </div>
             <p>Then the game board is splited into two parts, A and B.</p>
-            <img src="AandB.png" alt="part A and part B">
+            <div class="img-wrapper">
+                <img src="AandB.png" alt="part A and part B">
+                <div class="loader" id="loader4">
+                    <p>Loading</p>
+                    <div class="spin"></div>
+                </div>
+            </div>
             <p>Now it is RIGHT's turn to move.<br> He makes a move by first choosing either part A or part B to play in.<br> Then he is required to remove a <i>row</i> from the part he chooses. <br> This is done by clicking on a square within this row.<br>                In the 6x8 example that follows, RIGHT chooses to remove the 3rd row of part B.
                 <p class="important">REMEMBER: LEFT always removes columns and RIGHT removes rows.</p>
             </p>
-            <img src="second_click.gif" alt="RIGHT's click">
+            <div class="img-wrapper">
+                <img src="second_click.gif" alt="RIGHT's click">
+                <div class="loader" id="loader5">
+                    <p>Loading</p>
+                    <div class="spin"></div>
+                </div>
+            </div>
             <p>Now the game board splits into part A, B and C</p>
-            <img src="ABC.png" alt="part A, B and C">
+            <div class="img-wrapper">
+                <img src="ABC.png" alt="part A, B and C">
+                <div class="loader" id="loader6">
+                    <p>Loading</p>
+                    <div class="spin"></div>
+                </div>
+            </div>
             <p>Again, it is LEFT's turn.
                 <br>She must choose one of A, B or C and remove one of its columns.
                 <br>In what follows, she chooses B and removes the 3rd column.</p>
-            <img src="third_click.gif" alt="LEFT's click">
+            <div class="img-wrapper">
+                <img src="third_click.gif" alt="LEFT's click">
+                <div class="loader" id="loader7">
+                    <p>Loading</p>
+                    <div class="spin"></div>
+                </div>
+            </div>
             <p>The game goes on like this; And, eventually, the 6x8 starting position is completely erased.<br> The game is won by the player who kills the final row or column.
                 <br/>
                 <p class="important">However, our modified version of Bynum's game imposes the following additional restriction:</p>
                 <p class="important">First, a single row or column that no longer has any neighbors is said to be "isolated" (such rows or columns are no longer attached to any other rows or columns.)<br> Isolated rows or columns are automatically erased once they are generated
                     by a move.</p>
                 <p>- Isolated row:</p>
-                <img src="isorow.png" alt="An isolated row gets erased">
+                <div class="img-wrapper">
+                    <img src="isorow.png" alt="An isolated row gets erased">
+                    <div class="loader" id="loader8">
+                        <p>Loading</p>
+                        <div class="spin"></div>
+                    </div>
+                </div>
                 <p> Row 1 and row 3 will become isolated after row 2 is erased</p>
-                <img src="isorow.gif" alt="An isolated row gets erased">
+                <div class="img-wrapper">
+                    <img src="isorow.gif" alt="An isolated row gets erased">
+                    <div class="loader" id="loader9">
+                        <p>Loading</p>
+                        <div class="spin"></div>
+                    </div>
+                </div>
                 <p>- Isolated column:</p>
-                <img src="isocolumn.png" alt="An isolated column gets erased">
+                <div class="img-wrapper">
+                    <img src="isocolumn.png" alt="An isolated column gets erased">
+                    <div class="loader" id="loader10">
+                        <p>Loading</p>
+                        <div class="spin"></div>
+                    </div>
+                </div>
                 <p> Column 1 will become isolated after column 2 is erased</p>
-                <img src="isocolumn.gif" alt="An isolated column gets erased">
+                <div class="img-wrapper">
+                    <img src="isocolumn.gif" alt="An isolated column gets erased">
+                    <div class="loader" id="loader11">
+                        <p>Loading</p>
+                        <div class="spin"></div>
+                    </div>
+                </div>
                 <div id="do-not-show">
                     <button id="do-not-show-button"></button>
                     <p>(You can view instruction again in top right corner of the game board page, and can change this setting by clicking this button again.)</p>
-                    <img src="show-instruction.gif" alt="Show instrunction by clicking top right button on game board">
+                    <div class="img-wrapper">
+                        <img src="show-instruction.gif" alt="Show instrunction by clicking top right button on game board">
+                        <div class="loader" id="loader12">
+                            <p>Loading</p>
+                            <div class="spin"></div>
+                        </div>
+                    </div>
 
                 </div>
         </div>
-    </div>
-    <div id="load">
-        <p id="loading">Loading ...</p>
     </div>
 </body>
