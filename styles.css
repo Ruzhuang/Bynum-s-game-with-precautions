@@ -289,7 +289,7 @@ body {
     color: #517A85;
     background-color: #73bed3;
     border: 7px solid #517A85;
-    border-radius: 20px;
+    border-radius: 3vh;
     padding: .25em .5em;
     cursor: pointer;
 }

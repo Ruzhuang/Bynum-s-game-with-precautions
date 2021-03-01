@@ -100,7 +100,6 @@ p {
 }
 
 .img-wrapper {
-    min-width: 400px;
     position: relative;
     overflow: hidden;
     border-radius: 0.1in;
