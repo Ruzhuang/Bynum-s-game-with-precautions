@@ -103,7 +103,7 @@ p {
     position: relative;
     overflow: hidden;
     border-radius: 0.1in;
-    width: 70%;
+    width: 70vw;
     max-width: 500px;
 }
 
