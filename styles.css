@@ -112,8 +112,8 @@ body {
     position: absolute;
     z-index: 1;
     right: 0;
-    width: 290px;
-    height: 300px;
+    width: 310px;
+    height: 320px;
     background-color: #73bed3f1;
 }
 
@@ -124,6 +124,7 @@ body {
     justify-content: flex-start;
 }
 
+#download,
 #restart,
 #instruction {
     line-height: 50px;
@@ -142,6 +143,7 @@ body {
     margin-top: 50px;
 }
 
+#download:hover,
 #restart:hover,
 #instruction:hover {
     color: #B1E1DF;
