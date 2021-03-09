@@ -1,6 +1,7 @@
 const cache_name = "game-v1";
 const assets = [
-    "/AandB.png",
+    "/",
+    "https://ruzhuang.github.io/Bynum-s-game-with-precautions/ABC.png",
 ]
 self.addEventListener("install", installEvent => {
     installEvent.waitUntil(
