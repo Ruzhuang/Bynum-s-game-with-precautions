@@ -1,7 +1,7 @@
 {
     "name": "Bynum's Game with Precaution",
     "short_name": "Bynum's game",
-    "start_url": "index.html",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "#517A85",
     "theme_color": "#73bed3",
@@ -185,11 +185,6 @@
             "src": "icons/StoreLogo.png",
             "type": "image/png",
             "sizes": "50x50"
-        },
-        {
-            "src": "icons/SplashScreen.scale-100.png",
-            "type": "image/png",
-            "sizes": "620x300"
         },
         {
             "src": "icons/windows-smallsquare-24-24.png",
