@@ -21,7 +21,7 @@ const assets = [
     "/style_instruction.css",
     "/styles.css",
     "/third_click.gif",
-    "/icons/Square150x150Logo.scale-100.png",
+    `   "/icons/Square150x150Logo.scale-100.png",
     "/icons/Square150x150Logo.scale-125.png",
     "/icons/Square150x150Logo.scale-150.png",
     "/icons/Square150x150Logo.scale-200.png",
@@ -99,12 +99,20 @@ const assets = [
     "/icons/windowsphone-smalltile-99-99.png",
     "/icons/windowsphone-storelogo-120-120.png",
     "/icons/windowsphone-storelogo-50-50.png",
-    "/icons/windowsphone-storelogo-70-70.png",
+    "/icons/windowsphone-storelogo-70-70.png",`
 ]
 self.addEventListener("install", installEvent => {
     installEvent.waitUntil(
         caches.open(cache_name).then(cache => {
-            cache.addAll(assets)
+            cache.add("/")
+            cache.add("/ABC.png")
+            cache.add("/first_click.gif")
+            cache.add("/game.html")
+            cache.add("/grid6*8.png")
+            cache.add("/icons")
+            cache.add("/index.html")
+            cache.add("/isocolumn.gif")
+
         })
     )
 })
