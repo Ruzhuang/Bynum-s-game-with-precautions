@@ -105,14 +105,8 @@ self.addEventListener("install", installEvent => {
     installEvent.waitUntil(
         caches.open(cache_name).then(cache => {
             cache.add("/")
-            cache.add("/ABC.png")
-            cache.add("/first_click.gif")
-            cache.add("/game.html")
-            cache.add("/grid6*8.png")
-            cache.add("/icons")
             cache.add("/index.html")
-            cache.add("/isocolumn.gif")
-
+            cache.add("/icons/windowsphone-storelogo-70-70.png")
         })
     )
 })
