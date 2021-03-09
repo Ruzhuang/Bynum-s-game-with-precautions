@@ -1,7 +1,7 @@
 {
     "name": "Bynum's Game with Precaution",
     "short_name": "Bynum's game",
-    "start_url": "/",
+    "start_url": "https://ruzhuang.github.io/Bynum-s-game-with-precautions/",
     "display": "standalone",
     "background_color": "#517A85",
     "theme_color": "#73bed3",
