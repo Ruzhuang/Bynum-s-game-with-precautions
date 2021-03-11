@@ -40,6 +40,8 @@ const menuButton = document.getElementById("menu-button")
 const menu = document.getElementById("menu");
 const menuRestartButton = document.getElementById("restart");
 const instructionButton = document.getElementById("instruction");
+const downloadButton = document.getElementById("download");
+const downloadClose = document.getElementById("download-close");
 /*let circleTurn*/
 let rightTurn
 var width
@@ -49,6 +51,16 @@ menuButton.addEventListener('click', pressMenuButton);
 menu.addEventListener("mouseleave", closeMenu);
 menuRestartButton.addEventListener('click', menuRestart);
 instructionButton.addEventListener("click", showInstruction);
+downloadButton.addEventListener("click", showDownload);
+downloadClose.addEventListener("click", closeDownload);
+
+function showDownload() {
+    document.getElementById("download-wrapper").classList.add("show");
+}
+
+function closeDownload() {
+    document.getElementById("download-wrapper").classList.remove("show");
+}
 
 function menuRestart() {
     board.innerHTML = "";
