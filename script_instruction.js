@@ -15,7 +15,6 @@ var imgs = document.images,
         console.log("img.complete  " + "loader" + counter);
     } else {
         img.addEventListener('load', loadComplete(counter), false);
-        console.log("img.complete" + "loader" + counter);
         console.log("else  " + "loader" + counter);
     }
     counter++;
