@@ -19,7 +19,9 @@ var imgs = document.images,
 });
 
 function loadComplete(i) {
-    document.getElementById("loader" + i).style.display = "none";
+    setTimeout(() => {
+        document.getElementById("loader" + i).style.display = "none";
+    }, 5000);
 }
 const button = document.getElementById("skip");
 button.addEventListener("click", skip);
