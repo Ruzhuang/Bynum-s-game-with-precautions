@@ -12,8 +12,11 @@ var imgs = document.images,
 [].forEach.call(imgs, function(img) {
     if (img.complete) {
         document.getElementById("loader" + counter).style.display = "none";
+        console.log("img.complete  " + "loader" + counter);
     } else {
         img.addEventListener('load', loadComplete(counter), false);
+        console.log("img.complete" + "loader" + counter);
+        console.log("else  " + "loader" + counter);
     }
     counter++;
 });
