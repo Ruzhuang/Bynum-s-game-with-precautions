@@ -21,9 +21,8 @@ var imgs = document.images,
 });
 
 function loadComplete(i) {
-    setTimeout(() => {
-        document.getElementById("loader" + i).style.display = "none";
-    }, 5000);
+    document.getElementById("loader" + i).style.display = "none";
+    console.log("loadComplete " + "loader" + i)
 }
 const button = document.getElementById("skip");
 button.addEventListener("click", skip);

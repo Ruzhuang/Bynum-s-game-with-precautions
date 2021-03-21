@@ -49,12 +49,18 @@ var height
 
 menuButton.addEventListener('click', pressMenuButton);
 menu.addEventListener("mouseleave", closeMenu);
+document.addEventListener('click', function(e) {
+    if (!menu.contains(e.target) && !menuButton.contains(e.target)) {
+        menu.classList.remove("show");
+    }
+});
 menuRestartButton.addEventListener('click', menuRestart);
 instructionButton.addEventListener("click", showInstruction);
 downloadButton.addEventListener("click", showDownload);
 downloadClose.addEventListener("click", closeDownload);
 
 function showDownload() {
+    closeMenu();
     document.getElementById("download-wrapper").classList.add("show");
 }
 
@@ -63,6 +69,7 @@ function closeDownload() {
 }
 
 function menuRestart() {
+    closeMenu();
     board.innerHTML = "";
     setgrid();
 }
@@ -73,7 +80,6 @@ function showInstruction() {
 }
 
 function pressMenuButton() {
-    console.log("here")
     if (!menu.classList.contains("show")) {
         menu.classList.add("show");
     } else {
