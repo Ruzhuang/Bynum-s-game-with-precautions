@@ -5,15 +5,18 @@ if (localStorage.getItem("show") == "false" && localStorage.getItem("forceOpen")
 
 localStorage.removeItem("forceOpen")
 
-var imgs = document.images,
-    len = imgs.length,
-    counter = 1;
-
-
-document.getElementById("img1").addEventListener("load", function() {
-        document.getElementById("loader1").style.display = "none"
-    })
-    /*
+let img;
+for (let i = 1; i < 14; i++) {
+    img = document.getElementById("img" + i);
+    if (img.complete) {
+        document.getElementById("loader" + i).style.display = "none"
+    } else {
+        document.getElementById("img" + i).addEventListener("load", function() {
+            document.getElementById("loader" + i).style.display = "none"
+        })
+    }
+}
+/*
     [].forEach.call(imgs, function(img) {
         if (img.complete) {
             document.getElementById("loader" + counter).style.display = "none";
@@ -23,12 +26,12 @@ document.getElementById("img1").addEventListener("load", function() {
             console.log("else  " + "loader" + counter);
         }
         counter++;
-    });*/
+    });
 
 function loadComplete(i) {
     document.getElementById("loader" + i).style.display = "none";
     console.log("loadComplete " + "loader" + i)
-}
+}*/
 const button = document.getElementById("skip");
 button.addEventListener("click", skip);
 
