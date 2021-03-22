@@ -113,10 +113,10 @@ function startGame() {
     width = Number(document.getElementById("width").value)
     if (window_height / height < window_width / width) {
         document.documentElement.style.setProperty('--cell-size', ((1 - 0.25) / height) * 100 + "vh")
-            /*if (window_width < 550) {
-                document.documentElement.style.setProperty('--cell-size', ((1 - 0.5) / height) * 100 + "vh")
+        if (window_width < 550) {
+            document.documentElement.style.setProperty('--cell-size', ((1 - 0.4) / height) * 100 + "vh")
 
-            }*/
+        }
     } else {
         document.documentElement.style.setProperty('--cell-size', ((1 - 0.25) / width) * 100 + "vw")
     }

@@ -11,8 +11,7 @@
     
     body {
         margin: 0;
-        /*background-color: #F6F7E8;*/
-        background-color: red;
+        background-color: #F6F7E8;
     }
     
     #turn {
@@ -483,5 +482,8 @@
         }
         #restart {
             margin-top: 0px;
+        }
+        #set-button {
+            border-radius: 5px;
         }
     }
