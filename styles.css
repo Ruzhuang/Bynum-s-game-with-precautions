@@ -484,6 +484,7 @@
             margin-top: 0px;
         }
         #set-button {
-            border-radius: 5px;
+            border-radius: 20px;
+            padding: 0;
         }
     }
