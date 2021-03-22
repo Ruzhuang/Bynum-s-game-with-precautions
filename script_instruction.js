@@ -9,16 +9,21 @@ var imgs = document.images,
     len = imgs.length,
     counter = 1;
 
-[].forEach.call(imgs, function(img) {
-    if (img.complete) {
-        document.getElementById("loader" + counter).style.display = "none";
-        console.log("img.complete  " + "loader" + counter);
-    } else {
-        img.addEventListener('load', loadComplete(counter), false);
-        console.log("else  " + "loader" + counter);
-    }
-    counter++;
-});
+
+document.getElementById("img1").addEventListener("load", function() {
+        document.getElementById("loader1").style.display = "none"
+    })
+    /*
+    [].forEach.call(imgs, function(img) {
+        if (img.complete) {
+            document.getElementById("loader" + counter).style.display = "none";
+            console.log("img.complete  " + "loader" + counter);
+        } else {
+            img.addEventListener('load', loadComplete(counter));
+            console.log("else  " + "loader" + counter);
+        }
+        counter++;
+    });*/
 
 function loadComplete(i) {
     document.getElementById("loader" + i).style.display = "none";
