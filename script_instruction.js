@@ -6,7 +6,7 @@ if (localStorage.getItem("show") == "false" && localStorage.getItem("forceOpen")
 localStorage.removeItem("forceOpen")
 
 let img;
-for (let i = 1; i < 14; i++) {
+for (let i = 1; i < 12; i++) {
     img = document.getElementById("img" + i);
     if (img.complete) {
         document.getElementById("loader" + i).style.display = "none"
